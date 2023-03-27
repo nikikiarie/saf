@@ -16,7 +16,7 @@ mongoose.connect('mongodb+srv://nick:nick@cluster0.h5kvt5x.mongodb.net/?retryWri
 app.post("/stk", access, async (req, res) => {
   const token = req.accesstoken;
 
-  const shortcode = "8343462";
+  const shortcode = "6283407";
   const phone = req.body.phone.substring(1);
   const amount = req.body.amount;
   
