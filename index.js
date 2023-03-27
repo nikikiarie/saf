@@ -45,7 +45,7 @@ app.post("/stk", access, async (req, res) => {
         PartyA: `254${phone}`,
         PartyB: "174379",
         PhoneNumber: `254${phone}`,
-        CallBackURL: "https://weak-roses-mix-196-202-217-175.loca.lt/callback",
+        CallBackURL: "https://tame-gray-calf-cape.cyclic.app/callback",
         AccountReference: "Test",
         TransactionDesc: "Test",
       },
