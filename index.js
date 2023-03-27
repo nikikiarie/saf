@@ -16,7 +16,7 @@ mongoose.connect('mongodb+srv://nick:nick@cluster0.h5kvt5x.mongodb.net/?retryWri
 app.post("/stk", access, async (req, res) => {
   const token = req.accesstoken;
 
-  const shortcode = "6283407";
+  const shortcode = "174379";
   const phone = req.body.phone.substring(1);
   const amount = req.body.amount;
   
@@ -41,7 +41,7 @@ app.post("/stk", access, async (req, res) => {
         BusinessShortCode: shortcode,
         Password: password,
         Timestamp: timestamp,
-        TransactionType: "CustomerBuyGoodsOnline",
+        TransactionType: "CustomerPayBillOnline",
         Amount: amount,
         PartyA: `254${phone}`,
         PartyB: shortcode,
@@ -60,7 +60,7 @@ app.post("/stk", access, async (req, res) => {
 
 app.post("/callback", (req, res) => {
   console.log(req.body)
-  
+  console.log('sfxhcjk')
 
   const callbackData = req.body;
   console.log(callbackData.Body);
