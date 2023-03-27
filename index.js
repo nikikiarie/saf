@@ -10,7 +10,7 @@ app.use(express.urlencoded({extended:false}));
 
 
 
-// mongoose.connect('mongodb://0.0.0.0:27017/safcom').then(()=>console.log('db connected')).catch((err)=>console.log(err.message))
+mongoose.connect('mongodb+srv://nick:nick@cluster0.h5kvt5x.mongodb.net/?retryWrites=true&w=majority').then(()=>console.log('db connected')).catch((err)=>console.log(err.message))
 
 
 app.post("/stk", access, async (req, res) => {
@@ -72,20 +72,20 @@ app.post("/callback", (req, res) => {
 
   const amount = callbackData.Body.stkCallback.CallbackMetadata.Item[0].Value
   const transactionId = callbackData.Body.stkCallback.CallbackMetadata.Item[1].Value
-  const transactionDate = callbackData.Body.stkCallback.CallbackMetadata.Item[1].Value
-  const phone = callbackData.Body.stkCallback.CallbackMetadata.Item[1].Value
+  const transactionDate = callbackData.Body.stkCallback.CallbackMetadata.Item[2].Value
+  const phone = callbackData.Body.stkCallback.CallbackMetadata.Item[3].Value
 console.log({amount,phone,transactionDate,transactionId})
 
-  // const payment = new Transaction({
-  //   amount,
-  //   transactionDate,
-  //   transactionId,
-  //   phone
-  // })
+  const payment = new Transaction({
+    amount,
+    transactionDate,
+    transactionId,
+    phone
+  })
 
-  //  payment.save().then((data)=>{
-  //   console.log('saved successfully',{data})
-  //  })
+   payment.save().then((data)=>{
+    console.log('saved successfully',{data})
+   })
 
 
 });
