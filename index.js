@@ -16,9 +16,10 @@ mongoose.connect('mongodb+srv://nick:nick@cluster0.h5kvt5x.mongodb.net/?retryWri
 app.post("/stk", access, async (req, res) => {
   const token = req.accesstoken;
 
-  const shortcode = "174379";
+  const shortcode = "8343462";
   const phone = req.body.phone.substring(1);
   const amount = req.body.amount;
+  
   const passKey =
     "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919";
   const url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest";
@@ -40,10 +41,10 @@ app.post("/stk", access, async (req, res) => {
         BusinessShortCode: shortcode,
         Password: password,
         Timestamp: timestamp,
-        TransactionType: "CustomerPayBillOnline",
+        TransactionType: "CustomerBuyGoodsOnline",
         Amount: amount,
         PartyA: `254${phone}`,
-        PartyB: "174379",
+        PartyB: shortcode,
         PhoneNumber: `254${phone}`,
         CallBackURL: "https://tame-gray-calf-cape.cyclic.app/callback",
         AccountReference: "Test",
@@ -59,7 +60,7 @@ app.post("/stk", access, async (req, res) => {
 
 app.post("/callback", (req, res) => {
   console.log(req.body)
-  console.log('sfxhcjk')
+  
 
   const callbackData = req.body;
   console.log(callbackData.Body);
